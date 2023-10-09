@@ -1,0 +1,136 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.cartItem {
+    width: 700px;
+    height: 270px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    margin: 30px;
+}
+
+.cartItem img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.cartItem .description {
+    width: 100%;
+    font-size: 30px;
+}
+
+.countHandler input {
+    width: 40px;
+    text-align: center;
+    font-weight: bolder;
+}
+.danger{
+    color: red;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.success{
+    font-size: 20px;
+    color: goldenrod;
+    font-weight: bolder;
+}
+.success:hover{
+    background-color: rgb(38, 224, 38);
+    color: white;
+}
+.danger:hover{
+    background-color: rgb(247, 0, 0);
+    color: white;
+}
+.cartChange:hover{
+background-color: black;
+color: white;
+}
+.checkout button {
+    width: 150px;
+    height: 50px;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* responsive css */
+@media screen and (min-width: 200px) and (max-width: 991px) {
+    .cart {
+        display: flex;
+        max-width: fit-content;
+        justify-content: center;
+        align-items: center;
+    }
+    .cartItem {
+        max-width: 100vw;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 10px;
+    }
+    
+    .cartItem img {
+        width: 120px;
+        border-radius: 10px;
+    }
+    
+    .cartItem .description {
+        width: 100%;
+        font-size: 20px;
+    }
+    
+    .countHandler input {
+        width: 40px;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .big{
+        font-size: 20px;
+    }
+    .danger{
+        color: red;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .success{
+        font-size: 20px;
+        color: goldenrod;
+        font-weight: bolder;
+    }
+    .success:hover{
+        background-color: rgb(38, 224, 38);
+        color: white;
+    }
+    .danger:hover{
+        background-color: rgb(247, 0, 0);
+        color: white;
+    }
+    .cartChange:hover{
+    background-color: black;
+    color: white;
+    }
+    .checkout button {
+        width: fit-content;
+        height: fit-content;
+        padding: 8px;
+        background-color: rgb(80, 76, 76);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+    }
+}
