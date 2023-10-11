@@ -12,22 +12,6 @@ const getDefaultCart = () => {
     return cart;
 };
 
-// // Wholesale logic
-// function calculateTotalPrices(cart) {
-//     let totalRegularPrice = 0;
-//     let totalWholesalePrice = 0;
-
-//     cart.forEach((product) => {
-//       if (product.quantity >= product.wholesaleMinimumQuantity) {
-//         totalWholesalePrice += product.quantity * product.wholesalePrice;
-//       } else {
-//         totalRegularPrice += product.quantity * product.price;
-//       }
-//     });
-
-//     return { totalRegularPrice, totalWholesalePrice };
-//   }
-
 //   another wholesale logic
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
@@ -50,29 +34,6 @@ export const ShopContextProvider = (props) => {
         return totalAmount;
     };
 
-
-
-
-
-
-
-
-    // export const ShopContextProvider = (props) => {
-    //     const [cartItems, setCartItems] = useState(getDefaultCart());
-    //     const getTotalCartAmount = () => {
-    //         let totalAmount = 0;
-
-    //         for (const item in cartItems){
-    //             if ( cartItems[item] > 0){
-
-    //                 let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
-
-    //                 totalAmount += cartItems[item] * itemInfo.price;
-
-    //             }
-    //         }
-    // return totalAmount;
-    //     }
 
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
