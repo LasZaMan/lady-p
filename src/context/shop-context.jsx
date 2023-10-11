@@ -12,20 +12,67 @@ const getDefaultCart = () => {
     return cart;
 };
 
+// // Wholesale logic
+// function calculateTotalPrices(cart) {
+//     let totalRegularPrice = 0;
+//     let totalWholesalePrice = 0;
+
+//     cart.forEach((product) => {
+//       if (product.quantity >= product.wholesaleMinimumQuantity) {
+//         totalWholesalePrice += product.quantity * product.wholesalePrice;
+//       } else {
+//         totalRegularPrice += product.quantity * product.price;
+//       }
+//     });
+
+//     return { totalRegularPrice, totalWholesalePrice };
+//   }
+
+//   another wholesale logic
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
+
     const getTotalCartAmount = () => {
         let totalAmount = 0;
-        for (const item in cartItems){
-            if ( cartItems[item] > 0){
 
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
                 let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
-                totalAmount += cartItems[item] * itemInfo.price;
 
+                // Check if the item qualifies for a wholesale discount
+                if (itemInfo.wholesaleMinimumQuantity && cartItems[item] >= itemInfo.wholesaleMinimumQuantity) {
+                    totalAmount += cartItems[item] * itemInfo.wholesalePrice; // Calculate with wholesale price
+                } else {
+                    totalAmount += cartItems[item] * itemInfo.price; // Calculate with regular price
+                }
             }
         }
-return totalAmount;
-    }
+        return totalAmount;
+    };
+
+
+
+
+
+
+
+
+    // export const ShopContextProvider = (props) => {
+    //     const [cartItems, setCartItems] = useState(getDefaultCart());
+    //     const getTotalCartAmount = () => {
+    //         let totalAmount = 0;
+
+    //         for (const item in cartItems){
+    //             if ( cartItems[item] > 0){
+
+    //                 let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
+
+    //                 totalAmount += cartItems[item] * itemInfo.price;
+
+    //             }
+    //         }
+    // return totalAmount;
+    //     }
 
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -36,7 +83,7 @@ return totalAmount;
     };
 
     const updateCartItemCount = (newAmount, itemId) => {
-        setCartItems((prev) => ({...prev, [itemId]: newAmount}));
+        setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
     };
 
     const contextValue = { cartItems, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount };
